@@ -41,10 +41,10 @@ export default {
   },
 
   props: {
-    placeholder: String,
-    titlePrepend: String,
-    title: String,
-    value: String,
+    placeholder: [String, Number],
+    titlePrepend: [String, Number],
+    title: [String, Number],
+    value: [String, Number],
     resize: Number,
   },
 
