@@ -24,7 +24,7 @@
         @click="$emit('clickToTitle')"
       />
       <button type="submit">
-        <Icon type="plus-small"/>
+        <Icon :type="buttonIcon"/>
       </button>
     </form>
   </div>
@@ -46,6 +46,18 @@ export default {
     title: [String, Number],
     value: [String, Number],
     resize: Number,
+    buttonIcon: {
+      type: String,
+      default: () => 'plus-small'
+    },
+    minTextareaRows: {
+      type: [Number, String],
+      default: () => 1,
+    },
+    maxTextareaRows: {
+      type: [Number, String],
+      default: () => 5,
+    },
   },
 
   data: () => ({
@@ -71,8 +83,8 @@ export default {
       this.$nextTick(() => {
         const { scrollHeight } = this.$refs.textarea;
         const newTextareaRows = Math.ceil((scrollHeight - 28)/19);
-        if(newTextareaRows > 5) this.$emit('input', this.value.slice(0, -1));
-        this.textareaRows = Math.max(1, Math.min(5, newTextareaRows));
+        if(newTextareaRows > this.maxTextareaRows) this.$emit('input', this.value.slice(0, -1));
+        this.textareaRows = _.clamp(newTextareaRows, +this.minTextareaRows, +this.maxTextareaRows);
       })
     },
 
@@ -99,6 +111,7 @@ export default {
 .textarea {
   width: 100%;
   height: 100%;
+  font-size: 14px;
   box-sizing: border-box;
   background: var(--main-bg-color);
   border-radius: 10px;
