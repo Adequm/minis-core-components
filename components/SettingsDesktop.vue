@@ -69,6 +69,15 @@
         />
       </div>
 
+      <div class="settings__container">
+        <Icon 
+          type="exclamation" 
+          @click.prevent="$emit('switchHints')"
+          :text="getHint('hints')"
+          :size="22"
+        />
+      </div>
+
       <div v-if="showVertical" class="settings__container dashed">
         <Icon 
           :class="{ active: rating == 'up' }" 
@@ -113,6 +122,7 @@ export default {
     appHeight: Number,
     value: Boolean,
     rating: String,
+    showHints: Boolean,
     showVertical: Boolean,
     showHorizontalTop: Boolean,
     showHorizontalBottom: Boolean,
@@ -126,6 +136,7 @@ export default {
 
   methods: {
     getHint(path) {
+      if(!this.showHints) return;
       const errorMessage = _.invoke(this, 'translate', 'error');
       const hint = _.invoke(this, 'translateDef', `settings[${path}]`);
       return hint !== errorMessage ? hint : null;
