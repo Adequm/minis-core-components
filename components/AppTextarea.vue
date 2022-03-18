@@ -66,7 +66,10 @@ export default {
 
   watch: {
     value: 'setMaxTextareaRows',
-    resize: 'setMaxTextareaRows',
+    resize: {
+      immediate: true,
+      handler: 'setMaxTextareaRows'
+    },
   },
 
   computed: {
