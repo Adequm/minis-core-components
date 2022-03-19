@@ -1,6 +1,6 @@
 {
   "name": "minis-core-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {},
@@ -13,6 +13,6 @@
   "homepage": "https://adequm.github.io/minis/",
   "dependencies": {
     "lodash": "^4.17.21",
-    "vue": "^3.2.31"
+    "vue": "^2.6.11"
   }
 }
