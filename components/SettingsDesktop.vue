@@ -136,7 +136,7 @@ export default {
 
   methods: {
     getHint(path, showImportant) {
-      if(!this.showHints && !showImportant) return;
+      if((!this.showHints && !showImportant) || this.value) return;
       const errorMessage = _.invoke(this, 'translate', 'error');
       const hint = _.invoke(this, 'translateDef', `settings[${path}]`);
       return hint !== errorMessage ? hint : null;
