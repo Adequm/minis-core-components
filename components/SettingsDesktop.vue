@@ -69,11 +69,11 @@
         />
       </div>
 
-      <div class="settings__container">
+      <div class="settings__container" :class="{ dashed: !showHints }">
         <Icon 
-          type="exclamation" 
+          type="interrogation" 
           @click.prevent="$emit('switchHints')"
-          :text="getHint('hints')"
+          :text="getHint('hints', true)"
           :size="22"
         />
       </div>
@@ -135,8 +135,8 @@ export default {
   }),
 
   methods: {
-    getHint(path) {
-      if(!this.showHints) return;
+    getHint(path, showImportant) {
+      if(!this.showHints && !showImportant) return;
       const errorMessage = _.invoke(this, 'translate', 'error');
       const hint = _.invoke(this, 'translateDef', `settings[${path}]`);
       return hint !== errorMessage ? hint : null;
@@ -203,6 +203,7 @@ export default {
     flex-direction: column;
     .settings__container.dashed:not(.rounded) {
       grid-auto-columns: 46px;
+      grid-auto-rows: 46px;
     }
   }
 
