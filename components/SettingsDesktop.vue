@@ -225,7 +225,10 @@ export default {
   }
 
   &.isClosedSettings {
-    .settings__wrapper-vertical { right: 40px; }
+    .settings__wrapper-vertical { 
+      right: 40px;
+      top: 36px;
+    }
     .settings__wrapper-horizontal { 
       top: 40px;
       &_bottom {
