@@ -81,6 +81,7 @@ div.icon {
     border-radius: 10px;
     user-select: none;
     pointer-events: none;
+    box-shadow: 0 2px 0 1px var(--special-color-400);
   }
 }
 
