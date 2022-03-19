@@ -18,6 +18,7 @@
           side="bottom"
           :text="getHint('plus')"
           :size="22"
+          @click.prevent="!value && $emit('plus')"
         />
       </div>
     </div>
@@ -34,9 +35,9 @@
         <Icon 
           type="trash" 
           side="top"
-          @click.prevent="$emit('headset')"
           :text="getHint('trash')"
           :size="22"
+          @click.prevent="!value && $emit('trash')"
         />
       </div>
     </div>
@@ -45,59 +46,59 @@
       <div class="settings__container">
         <Icon 
           :type="themeIcon" 
-          @click.prevent="$emit('switchTheme', 'main')"
           :text="getHint('theme')"
           :size="22"
+          @click.prevent="!value && $emit('switchTheme', 'main')"
         />
         <Icon 
           type="palette" 
-          @click.prevent="$emit('switchTheme', 'special')"
           :text="getHint('color')"
           :size="22"
+          @click.prevent="!value && $emit('switchTheme', 'special')"
         />
         <Icon 
           type="globe" 
-          @click.prevent="$emit('switchLang')"
           :text="getHint('lang')"
           :size="22"
+          @click.prevent="!value && $emit('switchLang')"
         />
         <Icon 
           type="expand-arrows-alt" 
-          @click.prevent="$emit('switchFullscreen')"
           :text="getHint('fullscreen')"
           :size="22"
+          @click.prevent="!value && $emit('switchFullscreen')"
         />
       </div>
 
       <div class="settings__container" :class="{ dashed: !showHints }">
         <Icon 
           type="interrogation" 
-          @click.prevent="$emit('switchHints')"
           :text="getHint('hints', true)"
           :size="22"
+          @click.prevent="!value && $emit('switchHints')"
         />
       </div>
 
       <div v-if="showVertical" class="settings__container dashed">
         <Icon 
-          :class="{ active: rating == 'up' }" 
           type="caret-up" 
-          @click.prevent="$emit('like')"
+          :class="{ active: rating == 'up' }" 
           :text="getHint('up')"
           :size="22"
+          @click.prevent="!value && $emit('like')"
         />
         <Icon 
           type="headset" 
-          @click.prevent="$emit('headset')"
           :text="getHint('headset')"
           :size="22"
+          @click.prevent="!value && $emit('headset')"
         />
         <Icon 
-          :class="{ active: rating == 'down' }" 
           type="caret-down" 
-          @click.prevent="$emit('dislike')"
+          :class="{ active: rating == 'down' }" 
           :text="getHint('down')"
           :size="22"
+          @click.prevent="!value && $emit('dislike')"
         />
       </div>
     </div>
