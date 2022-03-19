@@ -140,6 +140,7 @@ export default {
       color: var(--special-color);
     }
     textarea {
+      height: inherit;
       width: inherit;
       resize: none;
       margin: 0;
