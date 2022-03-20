@@ -76,7 +76,7 @@ div.icon {
     z-index: 100;
     white-space: nowrap;
     background-color: var(--special-color);
-    color: var(--text-color);
+    color: var(--light-color);
     padding: 10px;
     border-radius: 10px;
     user-select: none;
