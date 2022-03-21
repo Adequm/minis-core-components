@@ -6,6 +6,7 @@ import Icon from './components/Icon.vue';
 import SettingsDesktop from './components/SettingsDesktop.vue';
 import SettingsMobile from './components/SettingsMobile.vue';
 import SlideButtons from './components/SlideButtons.vue';
+import LayoutFrame from './components/LayoutFrame.vue';
 
 export {
   AppModal,
@@ -16,4 +17,5 @@ export {
   SettingsDesktop,
   SettingsMobile,
   SlideButtons,
+  LayoutFrame,
 };
