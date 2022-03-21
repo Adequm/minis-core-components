@@ -42,13 +42,13 @@ export default {
     left: 0;
     z-index: 100;
     height: 100%;
-    opacity: .25;
+    opacity: .5;
     background: var(--special-color);
     cursor: pointer;
     transition: opacity .2s;
     z-index: 1;
     &:hover {
-      opacity: .4;
+      opacity: .45;
     }
   }
   &__content {
