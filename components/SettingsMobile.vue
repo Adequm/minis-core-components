@@ -1,5 +1,32 @@
 <template>
-  <div class="settings" :class="{ isClosedSettings: value }">
+  <div 
+    class="settings" 
+    :class="{ isClosedSettings: value }"
+    :style="{ marginLeft: `${ translate ? 50 : 0 }px` }"
+  >
+    <div class="title">
+      <span
+        v-for="(letter, index) of lodash.invoke($props, 'translate', 'title')"
+        :key="index"
+        v-text="letter"
+      />
+    </div>
+
+    <div v-if="showArrows" class="arrows">
+      <Icon 
+        type="angle-double-small-left" 
+        :size="60"
+        class="arrow-left"
+        @click.prevent="$emit('clickToArrow', 'left')"
+      />
+      <Icon 
+        type="angle-double-small-right" 
+        :size="60"
+        class="arrow-right"
+        @click.prevent="$emit('clickToArrow', 'right')"
+      />
+    </div>
+
     <Icon 
       :type="themeIcon" 
       :size="30"
@@ -28,6 +55,7 @@
 </template>
 
 <script>
+import _ from 'lodash';
 import Icon from './Icon.vue'
 
 export default {
@@ -41,7 +69,13 @@ export default {
     themeIcon: String,
     value: Boolean,
     isWidthMore768: Boolean,
+    showArrows: Boolean,
+    translate: Function,
   },
+
+  data: () => ({
+    lodash: _,
+  }),
 };
 </script>
 
@@ -53,6 +87,10 @@ export default {
   max-width: 60vw;
   align-items: center;
   justify-content: space-evenly;
+  position: absolute;
+  background: var(--main-bg-color);
+  padding: 10px;
+  border-radius: 10px;
 
   & > .icon {
     cursor: pointer;
@@ -61,11 +99,48 @@ export default {
       color: var(--text-color);
     }
   }
+
+  .arrows {
+    .arrow-left { right: calc(100% + 80px); }
+    .arrow-right { left: calc(100% + 40px); }
+    .arrow-left, .arrow-right {
+      position: absolute;
+      top: 0;
+      bottom: -90px;
+      margin: auto;
+      height: 60px;
+      cursor: pointer;
+    }
+    .icon:hover {
+      color: var(--main-bg-color);
+    }
+  }
+  .title {
+    position: absolute;
+    justify-self: center;
+    top: 10px;
+    bottom: -80px;
+    font-weight: bold;
+    color: var(--main-bg-color);
+    pointer-events: none;
+    writing-mode: vertical-lr;
+    right: calc(100% + 10px);
+    transform: rotate(180deg);
+    font-size: 30px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    display: flex;
+    text-align: center;
+  } 
   .minis {
     background: var(--main-bg-color);
     opacity: 1 !important;
     padding: 15px;
-    border-radius: 10px 10px 0 0;
+    justify-self: center;
+    top: calc(100% + 10px);
+    margin: 0 !important;
+    height: 50px;
+    border-radius: 10px;
     &:hover {
       color: var(--text-color);
     }
