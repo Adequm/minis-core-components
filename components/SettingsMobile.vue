@@ -135,7 +135,7 @@ export default {
     justify-self: center;
     top: calc(100% + 10px);
     margin: 0 !important;
-    height: 80px !important;
+    height: 50px !important;
     border-radius: 10px;
     &:hover {
       color: var(--text-color);
