@@ -2,11 +2,11 @@
   <div 
     class="settings" 
     :class="{ isClosedSettings: value }"
-    :style="{ marginLeft: `${ translate ? 50 : 0 }px` }"
+    :style="{ marginLeft: `${ title ? 50 : 0 }px` }"
   >
-    <div class="title">
+    <div v-if="title" class="title">
       <span
-        v-for="(letter, index) of lodash.invoke($props, 'translate', 'title')"
+        v-for="(letter, index) of title"
         :key="index"
         v-text="letter"
       />
@@ -55,7 +55,6 @@
 </template>
 
 <script>
-import _ from 'lodash';
 import Icon from './Icon.vue'
 
 export default {
@@ -70,12 +69,8 @@ export default {
     value: Boolean,
     isWidthMore768: Boolean,
     showArrows: Boolean,
-    translate: Function,
+    title: String,
   },
-
-  data: () => ({
-    lodash: _,
-  }),
 };
 </script>
 
@@ -91,6 +86,7 @@ export default {
   background: var(--main-bg-color);
   padding: 10px;
   border-radius: 10px;
+  margin-bottom: 50px;
 
   & > .icon {
     cursor: pointer;
@@ -139,7 +135,7 @@ export default {
     justify-self: center;
     top: calc(100% + 10px);
     margin: 0 !important;
-    height: 50px;
+    height: 80px !important;
     border-radius: 10px;
     &:hover {
       color: var(--text-color);
