@@ -1,45 +1,38 @@
 <template>
   <div class="minis__content">
     <iframe 
-    	:style="{ pointerEvents: isResize ? 'none' : 'all' }"
-    	:src="link"
-    	@load="$emit('load', $event)"
+      :style="{ pointerEvents: isResize ? 'none' : 'all' }"
+      :src="link"
+      @load="$emit('load', $event)"
     />
   </div>
 </template>
 
 <script>
 export default {
-	name: 'LayoutFrame',
+  name: 'LayoutFrame',
 
-	props: {
-		isResize: Boolean,
-		link: String,
-	},
+  props: {
+    isResize: Boolean,
+    link: String,
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .minis__content {
-  display: grid;
   height: inherit;
+  width: inherit;
   background-color: var(--main-bg-color);
   color: var(--text-color);
   font-size: 18px;
   position: relative;
   top: 0;
   z-index: 1;
-	grid-template-columns: repeat(2, 100px);
-  grid-auto-rows: 100px;
-  justify-content: center;
-  align-content: center;
-  justify-items: center;
-  align-items: center;
-  gap: 20px;
 
   > iframe {
-    width: 100%;
-    height: 100%;
+    height: inherit;
+    width: inherit;
     position: absolute;
     top: 0;
     left: 0;
